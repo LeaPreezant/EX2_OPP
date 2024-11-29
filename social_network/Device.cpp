@@ -2,24 +2,12 @@
 #include <iostream>
 
 
-std::string getOS(DeviceType type)
+std::string Device::getOS() const
 {
-    switch (type) 
-    {
-    case PHONE:
-        return ANDROID;
-    case PC:
-        return WINDOWS10;
-    case LAPTOP:
-        return MacOS;
-    case TABLET:
-        return IOS;
-    default:
-        return "Unknown OS";
-    }
+    return OS;
 }
 
-bool Device::isActive()
+bool Device::isActive() const
 {
     return active; // this
 }
@@ -47,7 +35,7 @@ unsigned int Device::getID() const
     return ID;
 }
 
-DeviceType Device::getType()
+DeviceType Device::getType() const
 {
     return TYPE;
 }

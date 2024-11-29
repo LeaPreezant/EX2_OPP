@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DEVICE_H
+#define DEVICE_H
 #include <string>
 
 ///////////////////////////////////////////////////////////
@@ -26,18 +27,20 @@ private:
 	bool active; //Var for active/inactive
 	std::string OS;
 
-	bool isActive();
-	void activate();
-	void deactivate();
-
 public:
 	unsigned int ID;
 	DeviceType TYPE;
 
-	std::string getOS(DeviceType type)const; 
+	bool isActive() const;
+	void activate();
+	void deactivate();
+
+	std::string getOS() const;
 
 	void init(unsigned int id, DeviceType type, std::string os);
-	int unsigned getID()const;
-	DeviceType getType();
+	unsigned int getID() const;
+	DeviceType getType() const;
 };
+
+#endif
 
