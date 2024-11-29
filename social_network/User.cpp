@@ -5,11 +5,15 @@ void User::init(unsigned int id, const std::string& username, unsigned int age)
 	ID = id;
 	USERNAME = username;
 	AGE = age;
+	DEVICES = new DevicesList();
+	DEVICES->init();
 }
 
 void User::clear() // Clears all linked list of devices
 {
-	DEVICES.clear(); // use func from DeviceList to clear linked list 
+	DEVICES->clear();
+	delete DEVICES;
+	DEVICES = nullptr;
 }
 
 unsigned int User::getID() const 
@@ -29,17 +33,17 @@ unsigned int User::getAge() const
 
 DevicesList& User::getDevices()
 {
-	return DEVICES;
+	return *DEVICES;
 }
 
 void User::addDevice(const Device& newDevice) 
 {
-	DEVICES.add(newDevice); // from DeviceList
+	DEVICES->add(newDevice); // from DeviceList
 }
 
 bool User::checkIfDevicesAreOn() const
 {
-	DeviceNode* cur = DEVICES.get_first(); 
+	DeviceNode* cur = DEVICES->get_first();
 	while (cur != nullptr) 
 	{ 
 		if (!cur->get_data().isActive())  // if not active

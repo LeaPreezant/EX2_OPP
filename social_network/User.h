@@ -10,7 +10,7 @@ private:
     unsigned int ID;
     std::string USERNAME;
     unsigned int AGE;
-    DevicesList DEVICES;
+    DevicesList* DEVICES;
 
 public:
     void init(unsigned int id, const std::string& username, unsigned int age); //Initialize a new object
